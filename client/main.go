@@ -29,7 +29,13 @@ func main() { // Create a connection to the gRPC server
 	// names := proto.NameList{
 	// 	Names: []string{"Alice", "Bob", "Charlie"},
 	// }
+
+	//example 1
 	//CallSayHello(client)
 	
-	CallSayHelloServerStreaming(client)
+	//example 2
+	//CallSayHelloServerStreaming(client)
+
+	//example 3
+	CallSayHelloClientStreaming(client)
 }
