@@ -18,7 +18,10 @@ func main() { // Create a connection to the gRPC server
 	if err != nil {
 		log.Fatalf("Failed to connect to server: %v", err)
 	}
+	
+	log.Println("gRPC server is running on port , connection made", port)
 	defer conn.Close()
+
 
 	// Create a client for the GreetService
 	client := proto.NewGreetServiceClient(conn)
@@ -26,7 +29,7 @@ func main() { // Create a connection to the gRPC server
 	// names := proto.NameList{
 	// 	Names: []string{"Alice", "Bob", "Charlie"},
 	// }
-	CallSayHello(client)
-
-	log.Println("gRPC client is running on port", port)
+	//CallSayHello(client)
+	
+	CallSayHelloServerStreaming(client)
 }
