@@ -1,0 +1,55 @@
+syntax="proto3";
+
+option go_package = "./proto";
+
+package greet_service;
+
+service GreetService {
+
+    /*
+    so there are 4 kinds of RPCs in gRPC:
+    1. Unary RPC: Client sends a single request and gets a single response.
+    2. Server Streaming RPC: Client sends a single request and gets a stream of responses.
+    3. Client Streaming RPC: Client sends a stream of requests and gets a single response.
+    4. Bidirectional Streaming RPC: Client sends a stream of requests and gets a stream
+    */
+
+    // this is a unary RPC
+  rpc SayHello(NoParam) returns (HelloResponse);
+
+  // this is a server streaming RPC
+  rpc SayHelloServerStream(NameList) returns (stream HelloResponse);
+
+  // this is a client streaming RPC
+  rpc SayHelloClientStream(stream HelloRequest) returns (MessageList);
+
+  // this is a bidirectional streaming RPC
+  rpc SayHelloBidirectional(stream HelloRequest) returns (stream HelloResponse);
+
+}
+
+message NoParam{};
+
+message HelloResponse {
+  string message = 1;
+}
+message HelloRequest {
+  string name = 1;
+}
+
+message NameList {
+  repeated string names = 1;
+}
+
+message MessageList {
+  repeated string messages = 1;
+}
+
+
+
+
+
+
+
+
+
